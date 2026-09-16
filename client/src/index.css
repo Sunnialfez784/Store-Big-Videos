@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-mist-100 text-ink-900 font-sans antialiased;
+  }
+
+  .dark body {
+    @apply bg-ink-900 text-mist-100;
+  }
+
+  /* Byte counts, timecodes and percentages must not jitter as they update. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-tungsten-500 ring-offset-2 ring-offset-mist-100 dark:ring-offset-ink-900;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .surface {
+    @apply bg-mist-50 border border-mist-200 dark:bg-ink-800 dark:border-ink-700;
+  }
+  .muted {
+    @apply text-ink-500 dark:text-mist-300;
+  }
+}
